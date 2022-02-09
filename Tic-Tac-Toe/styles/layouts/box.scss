@@ -1,0 +1,25 @@
+.box {
+  background-color: white;
+  height: 200px;
+  width: 350px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 10px;
+
+  &--title {
+    padding: 10px;
+    border-bottom: 1px solid grey;
+    color: black;
+    font-size: 34px;
+    margin-top: 10px;
+  }
+
+  &--items {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 40px;
+  }
+}
