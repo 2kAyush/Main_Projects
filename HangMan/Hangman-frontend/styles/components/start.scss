@@ -1,3 +1,30 @@
+.start-container {
+  height: 300px;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.start-inputs {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  transition: all 1000ms ease-in-out;
+  &__input {
+    padding: 5px;
+    margin-right: 10px;
+    border-radius: 10px;
+  }
+
+  &__select {
+    border-radius: 10px;
+    padding: 10px;
+    background-color: $pink-light;
+  }
+}
+
 .start-button {
   font-family: "Mochiy Pop P One", sans-serif;
   background: $pink-light;

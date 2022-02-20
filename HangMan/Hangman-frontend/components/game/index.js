@@ -1,45 +1,46 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Layout from "./layout";
+import { Link } from "react-router-dom"; // not needed here tho
+import {
+  createSession,
+  playInSession,
+  getCategories,
+} from "../../api/sessions";
 
-const MAX_LIVES = 6;
 export default function Game() {
-  const [actualWord, setActualWord] = useState("");
-  const [playedLetters, setPlayedLetters] = useState([]);
+  const [session, setSession] = useState(null);
+  const [categories, setCategories] = useState([{ id: -1, category: "" }]);
 
-  const wordSet = new Set([...actualWord]);
-  const playedSet = new Set([...playedLetters]);
-  // const lives = MAX_LIVES - wordSet.length;
-  const wrongLetters = playedLetters.filter((letter) => {
-    return !wordSet.has(letter);
-  });
-  const lives = MAX_LIVES - wrongLetters.length;
-  const isRunning = actualWord;
-  const isWon =
-    isRunning &&
-    [...wordSet].reduce((acc, curr) => {
-      if (!playedSet.has(curr)) return false;
-      return acc;
-    }, true);
-
-  const guess = (letter) => {
-    setPlayedLetters((prev) => [...prev, letter]);
+  const guess = async (letter) => {
+    const updatedSession = await playInSession(session.id, letter);
+    setSession(updatedSession);
   };
 
-  const start = () => {
-    setActualWord("house");
-    setPlayedLetters([]);
+  const start = async (name, category) => {
+    for (let i = 0; i < categories.length; i++) {
+      if (categories[i].category === category) {
+        const session = await createSession(name, categories[i].id);
+        setSession(session);
+        break;
+      }
+    }
   };
-
+  useEffect(async () => {
+    const categories = await getCategories();
+    // console.log(categories);
+    setCategories(categories);
+  }, []);
+  // console.log(session);
   return (
     <>
+      {/* <Link to="/api"> */}
+      <h1 className="hangman-header"> Hangman</h1>
+      {/* </Link> */}
       <Layout
-        lives={lives}
-        actualWord={actualWord}
-        playedSet={playedSet}
+        session={session}
         guess={guess}
         start={start}
-        isWon={isWon}
-        isRunning={isRunning}
+        categories={categories}
       />
     </>
   );
