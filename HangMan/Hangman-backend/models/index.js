@@ -24,10 +24,20 @@ Word.init(
   { sequelize, modelName: "word" }
 );
 
+class Categories extends Model {}
+Categories.init(
+  { category: DataTypes.STRING },
+  { sequelize, modelName: "categories" }
+);
+
 GameSession.Word = GameSession.belongsTo(Word);
+
+Word.Categories = Word.belongsTo(Categories);
+// connecting
 
 module.exports = {
   GameSession,
   Word,
+  Categories,
   sequelize,
 };

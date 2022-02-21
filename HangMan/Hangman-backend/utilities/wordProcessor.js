@@ -17,6 +17,7 @@ async function wordProcessor(gameSession) {
     if (!playedSet.has(curr)) return false;
     return acc;
   }, true);
+
   return {
     actualWord,
     playedLetters,
