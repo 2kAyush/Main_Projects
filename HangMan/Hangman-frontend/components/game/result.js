@@ -1,7 +1,9 @@
 import React from "react";
 import Lives from "./lives";
+import { useNavigate } from "react-router-dom";
 
 export default function Result({ actualWord, msg, won }) {
+  let navigate = useNavigate();
   return (
     <>
       <div className="game-wrapper">
@@ -21,7 +23,8 @@ export default function Result({ actualWord, msg, won }) {
             <button
               className={`res-btn`}
               onClick={() => {
-                window.location.reload(false); // just refreshing it for now....
+                // window.location.reload(false); // just refreshing it for now....
+                navigate("/");
               }}
             >
               <span className="gradient-text">Restart</span>

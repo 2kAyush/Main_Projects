@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Layout from "./layout";
-import { Link } from "react-router-dom"; // not needed here tho
+import { useNavigate } from "react-router-dom";
 import {
   createSession,
   playInSession,
@@ -10,10 +10,14 @@ import {
 export default function Game() {
   const [session, setSession] = useState(null);
   const [categories, setCategories] = useState([{ id: -1, category: "" }]);
-
+  let navigate = useNavigate();
   const guess = async (letter) => {
     const updatedSession = await playInSession(session.id, letter);
     setSession(updatedSession);
+    if (updatedSession.result) {
+      console.log("came here");
+      navigate(`/api/session/${updatedSession.game_id}/result`);
+    }
   };
 
   const start = async (name, category) => {
@@ -21,6 +25,7 @@ export default function Game() {
       if (categories[i].category === category) {
         const session = await createSession(name, categories[i].id);
         setSession(session);
+        navigate(`/api/session/${session.id}/play`);
         break;
       }
     }
@@ -33,9 +38,7 @@ export default function Game() {
   // console.log(session);
   return (
     <>
-      {/* <Link to="/api"> */}
       <h1 className="hangman-header"> Hangman</h1>
-      {/* </Link> */}
       <Layout
         session={session}
         guess={guess}

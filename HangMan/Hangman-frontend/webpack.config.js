@@ -1,7 +1,10 @@
+const path = require("path"); // maybe not needed
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+
 module.exports = {
   mode: "development",
   entry: "./app.js",
-  watch: true,
+  // watch: true,
   module: {
     rules: [
       {
@@ -19,4 +22,9 @@ module.exports = {
       },
     ],
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "./index.html",
+    }),
+  ],
 };

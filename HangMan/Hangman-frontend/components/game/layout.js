@@ -8,50 +8,44 @@ export default function Layout({ session, guess, start, categories }) {
   const isRunning = !!session;
   const isWon = isRunning && session.result && session.livesLeft > 0;
   const isLost = isRunning && session.livesLeft === 0;
-
-  let actualWord = "";
+  let actualWord = "",
+    game_id;
   if (isLost) {
     actualWord = "Actual Word was: " + session.actualWord;
   }
 
-  /* return (
+  return (
     <>
       <Routes>
-        {!isRunning && (
-          <Route
-            path="/api"
-            element={
-              <Start
-                onStart={start}
-                isRunning={isRunning}
-                categories={categories}
-              />
-            }
-          />
-        )}
-        {isRunning && !isWon && !isLost && (
-          <Route
-            path={`/api/session/${session.id}/play`}
-            element={<LiveGame session={session} guess={guess} />}
-          />
-        )}
-        {(isLost || isWon) && (
-          <Route
-            path="/api" // figure out the path
-            element={
-              <Result
-                actualWord={actualWord}
-                msg={`${isWon ? "You Won!" : "Game Over!"}`}
-                won={isWon}
-              />
-            }
-          />
-        )}
+        {/* {!isRunning && ( */}
+        <Route
+          path="/"
+          element={<Start onStart={start} categories={categories} />}
+        />
+        {/* )} */}
+        {/* {isRunning && !isWon && !isLost && ( */}
+        <Route
+          path={"/api/session/:id/play"}
+          element={<LiveGame session={session} guess={guess} />}
+        />
+        {/* )} */}
+        {/* {(isLost || isWon) && ( */}
+        <Route
+          path={"/api/session/:id/result"}
+          element={
+            <Result
+              actualWord={actualWord}
+              msg={`${isWon ? "You Won!" : "Game Over!"}`}
+              won={isWon}
+            />
+          }
+        />
+        {/* )} */}
       </Routes>
     </>
-  ); */
+  );
 
-  return (
+  /* return (
     <>
       {!isRunning && (
         <Start onStart={start} isRunning={isRunning} categories={categories} />
@@ -67,5 +61,5 @@ export default function Layout({ session, guess, start, categories }) {
         />
       )}
     </>
-  );
+  ); */
 }

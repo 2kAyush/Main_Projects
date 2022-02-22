@@ -1,12 +1,13 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
-export default function Start({ onStart, isRunning, categories }) {
+export default function Start({ onStart, categories }) {
   const [name, setName] = useState("");
   const [chosen, setChosen] = useState("City");
   return (
     <>
       <div className="game-wrapper">
-        <div className={`start-container ${isRunning ? "display-none" : ""}`}>
+        <div className={`start-container`}>
           <div className="start-inputs">
             <input
               className="start-inputs__input"
@@ -36,6 +37,7 @@ export default function Start({ onStart, isRunning, categories }) {
               })}
             </select>
           </div>
+          {/* <Link to="/api/session"> */}
           <button
             className={`start-button`}
             onClick={() => {
@@ -44,6 +46,7 @@ export default function Start({ onStart, isRunning, categories }) {
           >
             Start
           </button>
+          {/* </Link> */}
         </div>
       </div>
     </>
