@@ -9,6 +9,7 @@ async function initialize() {
   app.use((req, res, next) => {
     // res.set("Access-Control-Allow-Origin", "http://127.0.0.1:5500");
     res.set("Access-Control-Allow-Origin", "http://localhost:8080");
+    // res.set("Access-Control-Allow-Origin", "http://localhost:3000");
     // res.set("Access-Control-Allow-Origin", "http://192.168.0.29:8080");
     res.set("Access-Control-Allow-Headers", "Content-type");
     next();
