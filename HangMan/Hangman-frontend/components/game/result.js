@@ -4,15 +4,18 @@ import { useNavigate } from "react-router-dom";
 
 export default function Result({ actualWord, msg, won }) {
   let navigate = useNavigate();
+  let lives = 0;
+  if (won) lives = -1;
+
   return (
     <>
       <div className="game-wrapper">
         <div className="result-wrapper">
-          {!won && (
-            <div className="left-pane">
-              <Lives livesLeft={0} />
-            </div>
-          )}
+          {/* {!won && ( */}
+          <div className="left-pane">
+            <Lives livesLeft={lives} />
+          </div>
+          {/* // )} */}
           <div className="result-pane">
             <h1 className={`result-pane__header ${won ? "success" : "danger"}`}>
               {msg}

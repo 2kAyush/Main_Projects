@@ -15,8 +15,7 @@ export default function Game() {
     const updatedSession = await playInSession(session.id, letter);
     setSession(updatedSession);
     if (updatedSession.result) {
-      console.log("came here");
-      navigate(`/api/session/${updatedSession.game_id}/result`);
+      navigate(`/api/session/${updatedSession.id}/result`);
     }
   };
 

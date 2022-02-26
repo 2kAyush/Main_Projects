@@ -1,4 +1,7 @@
 .start-container {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
   height: 300px;
   width: 100vw;
   display: flex;
@@ -8,20 +11,23 @@
 }
 
 .start-inputs {
-  width: 100%;
+  width: 40%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   transition: all 1000ms ease-in-out;
   &__input {
     padding: 5px;
     margin-right: 10px;
     border-radius: 10px;
+    // margin: 10px 0;
   }
 
   &__select {
     border-radius: 10px;
     padding: 10px;
     background-color: $pink-light;
+    margin-top: 10px;
   }
 }
 
@@ -31,7 +37,7 @@
   padding: 1rem 2.5rem;
   display: inline-grid;
   place-items: center;
-  font-size: 2rem;
+  font-size: 1rem;
   color: $dark-color;
   border-radius: 15px;
   border: 2px solid $pink-dark;

@@ -6,13 +6,13 @@ export default function Start({ onStart, categories }) {
   const [chosen, setChosen] = useState("City");
   return (
     <>
-      <div className="game-wrapper">
+      <div className="game-wrapper" style={{ height: "100vh" }}>
         <div className={`start-container`}>
           <div className="start-inputs">
             <input
               className="start-inputs__input"
               type="text"
-              placeholder="Enter your Name here"
+              placeholder="Name"
               onChange={(e) => {
                 setName(e.target.value);
               }}
@@ -37,7 +37,6 @@ export default function Start({ onStart, categories }) {
               })}
             </select>
           </div>
-          {/* <Link to="/api/session"> */}
           <button
             className={`start-button`}
             onClick={() => {
@@ -46,7 +45,6 @@ export default function Start({ onStart, categories }) {
           >
             Start
           </button>
-          {/* </Link> */}
         </div>
       </div>
     </>

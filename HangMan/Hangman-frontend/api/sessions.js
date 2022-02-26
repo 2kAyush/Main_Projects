@@ -1,4 +1,5 @@
-const BASE_URL = "http://localhost:8000/api/sessions";
+// const BASE_URL = "http://localhost:8000/api/sessions";
+const BASE_URL = "https://hangman-rns.herokuapp.com/api/sessions";
 
 async function createSession(name, categoryId) {
   const response = await fetch(`${BASE_URL}/`, {

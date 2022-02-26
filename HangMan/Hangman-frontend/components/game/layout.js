@@ -8,8 +8,7 @@ export default function Layout({ session, guess, start, categories }) {
   const isRunning = !!session;
   const isWon = isRunning && session.result && session.livesLeft > 0;
   const isLost = isRunning && session.livesLeft === 0;
-  let actualWord = "",
-    game_id;
+  let actualWord = "";
   if (isLost) {
     actualWord = "Actual Word was: " + session.actualWord;
   }

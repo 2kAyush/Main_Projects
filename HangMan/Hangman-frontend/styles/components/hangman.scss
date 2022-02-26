@@ -1,14 +1,18 @@
 .hangman-container {
   position: relative;
+  top: 7%;
+  right: 10%;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
   padding-left: 10rem;
   padding-top: 8rem;
   box-sizing: border-box;
-  height: 750px;
 }
 
 .pole {
   position: absolute;
-  height: 700px;
+  height: 400px;
   top: 2rem;
   left: 3rem;
   border-left: 10px solid brown;
@@ -17,7 +21,7 @@
 
   &::after {
     content: "";
-    height: 5.5rem;
+    height: 2.5rem;
     width: 10px;
     background: brown;
     position: absolute;
@@ -45,7 +49,6 @@
       &::before {
         content: "(";
         font-size: 3rem;
-        transform: rotate(90deg);
         font-family: sans-serif;
         position: absolute;
         top: 50px;
@@ -61,37 +64,37 @@
     }
     &:nth-child(2) {
       position: absolute;
-      height: 300px;
+      height: 120%;
       left: 55px;
     }
     &:nth-child(3) {
       position: absolute;
       transform: rotate(45deg);
       left: 20px;
-      top: 150px;
+      top: 120%;
     }
     &:nth-child(4) {
       position: absolute;
       transform: rotate(-45deg);
       left: 90px;
-      top: 150px;
+      top: 120%;
     }
     &:nth-child(5) {
       position: absolute;
       transform: rotate(45deg);
       left: 20px;
-      top: 400px;
+      top: 202%;
     }
     &:nth-child(6) {
       position: absolute;
       transform: rotate(-45deg);
       left: 90px;
-      top: 400px;
+      top: 202%;
     }
   }
 }
 
-@for $i from 1 through 6 {
+@for $i from 1 through 7 {
   .hangman-#{$i} {
     @for $j from 1 through $i {
       .hangman__element:nth-child(#{$j}) {
@@ -102,10 +105,27 @@
 }
 
 .hangman-6 {
+  top: -50px;
   .hangman__element:nth-child(1) {
-    &::after,
+    &::after {
+      display: block;
+    }
     &::before {
       display: block;
+      transform: rotate(90deg);
+    }
+  }
+}
+
+.hangman-7 {
+  .hangman__element:nth-child(1) {
+    &::after {
+      display: block;
+    }
+    &::before {
+      display: block;
+      transform: rotate(270deg);
+      left: 40px;
     }
   }
 }
