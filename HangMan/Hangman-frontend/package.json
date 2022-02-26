@@ -2,9 +2,10 @@
   "name": "hangman",
   "version": "1.0.0",
   "description": "An awesome game developed by awesome developers",
+  "main": "app.js",
   "scripts": {
-    "build": "webpack",
-    "dev": "webpack-dev-server --mode development --open"
+    "dev": "webpack-dev-server --mode development --open",
+    "build": "webpack --config webpack.config.js --mode production"
   },
   "author": "",
   "license": "ISC",
