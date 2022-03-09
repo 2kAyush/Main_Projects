@@ -1,0 +1,90 @@
+@import "settings/reset.scss";
+@import "settings/variables.scss";
+@import "layouts/container.scss";
+@import "components/start.scss";
+@import "components/hangman.scss";
+@import "components/word.scss";
+@import "components/lives.scss";
+@import "layouts/result.scss";
+@import "components/replay_btn.scss";
+@import url("https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap");
+
+* {
+  font-family: "Mochiy Pop P One", sans-serif;
+  text-decoration: none;
+}
+
+.hangman-header {
+  font-size: 50px;
+  height: 70px;
+  font-family: "Mochiy Pop P One", sans-serif;
+  position: fixed;
+  left: 50%;
+  margin-top: 10px;
+  transform: translateX(-50%);
+  // background: linear-gradient($success, $danger);
+  /* background: linear-gradient(217deg, $pink-light, rgba(255, 0, 0, 0) 70.71%),
+    linear-gradient(127deg, $success, rgba(0, 255, 0, 0) 70.71%),
+    linear-gradient(336deg, rgba(0, 0, 255, 0.8), rgba(0, 0, 255, 0) 70.71%); */
+  background: linear-gradient(
+    45deg,
+    #ca4246 16.666%,
+    #e16541 16.666%,
+    #e16541 33.333%,
+    #f18f43 33.333%,
+    #f18f43 50%,
+    #8b9862 50%,
+    #8b9862 66.666%,
+    #476098 66.666%,
+    #476098 83.333%,
+    #a7489b 83.333%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  /* -moz-background-clip: text;
+  -moz-text-fill-color: transparent; */
+  cursor: default;
+  &:hover {
+    animation: rainbow-text-simple-animation-rev 0.75s ease forwards;
+  }
+}
+@keyframes rainbow-text-simple-animation-rev {
+  0% {
+    background-size: 650%;
+  }
+  40% {
+    background-size: 350%;
+  }
+  100% {
+    background-size: 100%;
+  }
+}
+.display-none {
+  display: none;
+}
+
+.display-flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.justify-content-around {
+  justify-content: space-around;
+}
+
+.word-flex {
+  margin-bottom: 5rem;
+}
+
+.success {
+  color: $success;
+}
+
+.danger {
+  color: $danger;
+}
